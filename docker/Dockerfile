@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:7.1.3-ubuntu-20.04
+FROM mcr.microsoft.com/powershell:mariner-2.0-arm64
 
 SHELL ["pwsh", "-Command"]
 
