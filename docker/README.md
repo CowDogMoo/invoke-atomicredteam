@@ -19,8 +19,15 @@ With that out of the way, you can build and push the container image to `GHCR`:
 
 ```bash
 export BUILDX_NO_DEFAULT_ATTESTATIONS=1 # Resolve unknown/unknown attestation image
+
 echo $GITHUB_TOKEN | docker login ghcr.io -u $YOUR_GITHUB_USER --password-stdin
-docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/$YOUR_GITHUB_USER/atomic-red:latest --push .
+docker buildx create --name new_builder --use
+docker buildx inspect --bootstrap
+
+docker buildx build \
+    --platform linux/amd64,linux/arm64 \
+    -t ghcr.io/$YOUR_GITHUB_USER/atomic-red:latest \
+    --push .
 ```
 
 ## Testing the Container Image
