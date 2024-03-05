@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1.3
-
 # Define base images for different architectures
 ARG POWERSHELL_AMD64=mcr.microsoft.com/powershell:mariner-2.0
 ARG POWERSHELL_ARM64=mcr.microsoft.com/powershell:mariner-2.0-arm64

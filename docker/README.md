@@ -18,6 +18,7 @@ Once you have the token, assign the value to the `GITHUB_TOKEN` environment vari
 With that out of the way, you can build and push the container image to `GHCR`:
 
 ```bash
+export BUILDX_NO_DEFAULT_ATTESTATIONS=1 # Resolve unknown/unknown attestation image
 echo $GITHUB_TOKEN | docker login ghcr.io -u $YOUR_GITHUB_USER --password-stdin
 docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/$YOUR_GITHUB_USER/atomic-red:latest --push .
 ```
